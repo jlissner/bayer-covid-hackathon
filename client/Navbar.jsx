@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
 		padding: theme.spacing(1),
     fontFamily: 'monospace',
+    fontWeight: 'bold',
 	},
 }));
 
