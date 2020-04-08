@@ -7,7 +7,7 @@ router.get('/ping', (req, res) => {
   res.send('pong');
 });
 
-router.get('/heartrate', (req, res) => {
+router.get('/heart-rate', (req, res) => {
   R(path.resolve('./server/r/heartrate.R'))
     .call({}, (err, data) => {
       if (err) {
@@ -20,7 +20,7 @@ router.get('/heartrate', (req, res) => {
     });
 });
 
-router.get('/pulserate', (req, res) => {
+router.get('/pulse-rate', (req, res) => {
   R(path.resolve('./server/r/pulserate.R'))
     .call({}, (err, data) => {
       if (err) {
@@ -33,7 +33,7 @@ router.get('/pulserate', (req, res) => {
     });
 });
 
-router.get('/respiratoryRate', (req, res) => {
+router.get('/respiratory-rate', (req, res) => {
   R(path.resolve('./server/r/respiratoryRate.R'))
     .call({}, (err, data) => {
       if (err) {

@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Checkbox,
+  Radio,
+  RadioGroup,
   Divider,
   FormControlLabel,
   Grid,
@@ -12,6 +14,7 @@ import {
 import _map from 'lodash/map';
 import _noop from 'lodash/noop';
 import _omit from 'lodash/omit';
+import _camelCase from 'lodash/startCase';
 import _startCase from 'lodash/startCase';
 import _xor from 'lodash/xor';
 import If from '../utils/If';
@@ -104,6 +107,29 @@ function FormItem({
               </Grid>
             ))}
           </Grid>
+        );
+      }
+      case 'radio': {
+        return (
+          <RadioGroup name={_camelCase(label)}>
+            <Grid container>
+              {_map(options, (opt) => (
+                <Grid key={opt.value} item xs={12}>
+                  <FormControlLabel
+                    control={(
+                      <Radio
+                        checked={value.indexOf(opt.value) > -1}
+                        onChange={() => setValue(_xor(value, [opt.value]))}
+                        disabled={disabled}
+                        required={required}
+                      />
+                    )}
+                    label={opt.label || _startCase(opt.value)}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </RadioGroup>
         );
       }
       case 'select': {
